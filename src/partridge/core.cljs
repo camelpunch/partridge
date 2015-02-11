@@ -4,19 +4,25 @@
 
 (enable-console-print!)
 
-(defonce app-state (atom {:text "Hello world!"}))
+(def selected-waterway (atom "River Soar Navigation"))
+
+(def waterways ["Trent & Mersey Canal"
+                "Shropshire Union Canal"
+                "River Soar Navigation"])
 
 (defn home []
   [:div
    [:div#controls
-    [:label {:for "waterway"} "Waterway:"]
-    [:select#waterway [:option "Trent & Mersey Canal"]]]
+    [:label {:for "waterway"} "Waterway: "]
+    [:select#waterway
+     {:value @selected-waterway}
+     (map (fn [name] [:option name]) waterways)]]
    [:div#map-canvas]])
 
 (defn home-did-mount []
   (let [map-canvas (.getElementById js/document "map-canvas")
         map-options (clj->js {:center {:lat 53.0672367 :lng -2.52393}
-                        :zoom 9})]
+                              :zoom 9})]
     (js/google.maps.Map. map-canvas map-options)))
 
 (defn home-component []
