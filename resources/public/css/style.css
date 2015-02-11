@@ -1,3 +1,6 @@
-body { margin: 0; padding: 0 }
-h1 { text-align: center; font-family: "Helvetica Neue"; font-weight: 100 }
-#map-canvas { height: 400px; margin: 0; padding: 0; }
+body { margin: 0;
+       padding: 0;
+       font-family: "Helvetica Neue";
+       font-weight: 300 }
+#controls { margin: 5px }
+#map-canvas { height: 500px; margin: 0; padding: 0; }
